@@ -6,6 +6,9 @@ public class ScoreCountScript : MonoBehaviour
 {
     public static int ScoreValue = 0;
     private TMP_Text score;
+
+    private TMP_Text finalScoreText;
+    private TMP_Text HighScoreText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +24,7 @@ public class ScoreCountScript : MonoBehaviour
     void Update()
     {
         score.text = "Score: " + ScoreValue.ToString();
+		
 
-    }
+	}
 }
