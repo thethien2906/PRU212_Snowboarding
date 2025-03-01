@@ -1,18 +1,30 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOverScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-   public void Restart()
-    {
+	public void Restart()
+	{
+		OnGameOver(); // Lưu điểm trước khi restart
 		SceneManager.LoadSceneAsync(1);
 	}
 
-    // Update is called once per frame
-    public void Home()
-    {
+	public void Home()
+	{
+		OnGameOver(); // Lưu điểm trước khi về màn hình chính
 		SceneManager.LoadSceneAsync(0);
+	}
 
+	private void OnGameOver()
+	{
+		ScoreCountScript scoreScript = FindObjectOfType<ScoreCountScript>();
+		if (scoreScript != null)
+		{
+			scoreScript.GameOver();
+		}
+		else
+		{
+			Debug.LogWarning("ScoreCountScript not found! Cannot save final score.");
+		}
 	}
 }
