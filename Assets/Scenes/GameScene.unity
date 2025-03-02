@@ -1454,6 +1454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highScoreText: {fileID: 1245739846}
   finalScoreText: {fileID: 1276913642}
+  displayFinalScoreText: {fileID: 1276913642}
 --- !u!114 &1961419134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,6 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fb265788778044692d6a295d922bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverUI: {fileID: 1908129419}
 --- !u!1001 &282036715978527315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1897,6 +1899,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7992912013375481771, guid: 11ce8164159d3f043ac4e6eaaa08e0e8, type: 3}
+      propertyPath: gameOverUI
+      value: 
+      objectReference: {fileID: 2099733336}
     - target: {fileID: 7992912013375481771, guid: 11ce8164159d3f043ac4e6eaaa08e0e8, type: 3}
       propertyPath: rotationSpeed
       value: 2500
