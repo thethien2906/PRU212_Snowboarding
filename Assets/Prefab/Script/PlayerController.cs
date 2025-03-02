@@ -103,5 +103,13 @@ public class PlayerController : MonoBehaviour
 			isGrounded = true;
         }
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Destroy(this.gameObject);
+            
+        }
+    }
 
 }

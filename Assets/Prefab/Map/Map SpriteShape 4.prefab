@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8072654386798327194}
   - component: {fileID: 2930193768948031332}
   - component: {fileID: 1107753372445279110}
+  - component: {fileID: -4541267935862497354}
   m_Layer: 0
   m_Name: Map SpriteShape 4
   m_TagString: Ground
@@ -791,6 +792,21 @@ SurfaceEffector2D:
   m_UseContactForce: 0
   m_UseFriction: 1
   m_UseBounce: 1
+--- !u!114 &-4541267935862497354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600600365407853986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fda3430d00b0c45a83e62638cd49a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surfaceEffector: {fileID: 0}
+  multiplier: 1.05
+  interval: 5
 --- !u!1 &4206251433801034726
 GameObject:
   m_ObjectHideFlags: 0
