@@ -5,9 +5,16 @@ public class MapSpawnerController : MonoBehaviour
 {
     public GameObject[] mapPrefabs;  // Danh sách các prefab map có thể spawn
     public Transform firstMap;       // Map đầu tiên có sẵn trong Scene
-    public int maxMaps = 3;          // Số lượng map tối thiểu duy trì
+    public int maxMaps = 3;          // Số lượng map tối đa tồn tại
+
+    [Header("Surface Speed Settings")]
+    public float minSpeed = 5f;
+    public float maxSpeed = 20f;
+    public float speedChangeRate = 0.5f; // Tốc độ thay đổi mỗi giây
+    public bool speedIncreaseOverTime = true;
 
     private List<GameObject> spawnedMaps = new List<GameObject>();
+    private float currentSpeed;
 
     void Start()
     {
@@ -17,53 +24,104 @@ public class MapSpawnerController : MonoBehaviour
             return;
         }
 
-        spawnedMaps.Add(firstMap.gameObject); // Thêm map đầu tiên vào danh sách
+        spawnedMaps.Add(firstMap.gameObject);
+        currentSpeed = minSpeed;
 
-        // Spawn đủ 3 map ban đầu
+        // Áp dụng tốc độ ban đầu cho map đầu tiên
+        ApplySurfaceSpeed(firstMap.gameObject, currentSpeed);
+
+        // Tạo đủ số lượng map ban đầu
         for (int i = 1; i < maxMaps; i++)
         {
             SpawnMap(spawnedMaps[spawnedMaps.Count - 1]);
         }
     }
 
+    void Update()
+    {
+        AdjustSurfaceSpeed();
+    }
+
     void SpawnMap(GameObject previousMap)
     {
-        GameObject newMap = Instantiate(mapPrefabs[Random.Range(0, mapPrefabs.Length)]);
+        if (mapPrefabs.Length == 0)
+        {
+            Debug.LogError("⚠️ Không có prefab nào để spawn!");
+            return;
+        }
 
+        GameObject newMap = Instantiate(mapPrefabs[Random.Range(0, mapPrefabs.Length)]);
         Transform previousEndPos = previousMap.transform.Find("EndPos");
         Transform newStartPos = newMap.transform.Find("StartPos");
 
         if (previousEndPos == null || newStartPos == null)
         {
-            Debug.LogError("⚠️ StartPos hoặc EndPos bị thiếu trong prefab!");
+            Debug.LogError($"⚠️ Thiếu StartPos hoặc EndPos trong prefab {newMap.name}!");
+            Destroy(newMap);
             return;
         }
 
-        // Điều chỉnh vị trí để map mới nối vào map trước
         Vector3 offset = newStartPos.position - newMap.transform.position;
         newMap.transform.position = previousEndPos.position - offset;
 
         spawnedMaps.Add(newMap);
 
-        // Nếu số map vượt quá maxMaps, xóa map cũ nhất
+        ApplySurfaceSpeed(newMap, currentSpeed);
+
         if (spawnedMaps.Count > maxMaps)
         {
             Destroy(spawnedMaps[0]);
             spawnedMaps.RemoveAt(0);
         }
-
-        Debug.Log($"✅ Spawn map {newMap.name} tại {newMap.transform.position}");
     }
 
     public void CheckAndSpawnNextMap(Transform player)
     {
-        if (spawnedMaps.Count >= 2)
+        if (spawnedMaps.Count < 2) return;
+
+        GameObject lastMap = spawnedMaps[spawnedMaps.Count - 1];
+
+        Transform lastStartPos = lastMap.transform.Find("StartPos");
+        if (lastStartPos == null)
         {
-            GameObject thirdMap = spawnedMaps[2];
-            if (player.position.x > thirdMap.transform.Find("StartPos").position.x)
-            {
-                SpawnMap(spawnedMaps[spawnedMaps.Count - 2]);
-            }
+            Debug.LogError($"⚠️ {lastMap.name} thiếu StartPos!");
+            return;
+        }
+
+        if (player.position.x > lastStartPos.position.x)
+        {
+            SpawnMap(spawnedMaps[spawnedMaps.Count - 1]);
+        }
+    }
+
+    void ApplySurfaceSpeed(GameObject map, float speed)
+    {
+        SurfaceEffector2D surfaceEffector = map.GetComponentInChildren<SurfaceEffector2D>();
+        if (surfaceEffector != null)
+        {
+            surfaceEffector.speed = speed;
+        }
+    }
+
+    void AdjustSurfaceSpeed()
+    {
+        if (speedIncreaseOverTime)
+        {
+            currentSpeed += speedChangeRate * Time.deltaTime;
+            if (currentSpeed > maxSpeed)
+                currentSpeed = maxSpeed;
+        }
+        else
+        {
+            currentSpeed -= speedChangeRate * Time.deltaTime;
+            if (currentSpeed < minSpeed)
+                currentSpeed = minSpeed;
+        }
+
+        // Cập nhật tốc độ cho tất cả các map hiện tại
+        foreach (GameObject map in spawnedMaps)
+        {
+            ApplySurfaceSpeed(map, currentSpeed);
         }
     }
 }
