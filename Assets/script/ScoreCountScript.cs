@@ -10,12 +10,15 @@ public class ScoreCountScript : MonoBehaviour
     private TMP_Text scoreText;
     [SerializeField] private TMP_Text highScoreText;  // Hiển thị High Score
     [SerializeField] private TMP_Text finalScoreText; // Hiển thị Final Score (Your Score)
+    public TMP_Text displayFinalScoreText;
     private SurfaceEffector2D surfaceEffector; // Reference to SurfaceEffector2D from Map object
+    private bool isGameOver = false; // Thêm biến này
 
     private string savePath;
 
     void Start()
     {
+        ScoreValue = 0;
         scoreText = GetComponent<TMP_Text>();
         if (scoreText == null)
         {
@@ -47,9 +50,9 @@ public class ScoreCountScript : MonoBehaviour
 
     private IEnumerator IncrementScore()
     {
-        while (true)
+        while (!isGameOver)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
             if (surfaceEffector != null)
             {
                 ScoreValue += Mathf.RoundToInt(surfaceEffector.speed);
@@ -60,9 +63,15 @@ public class ScoreCountScript : MonoBehaviour
     // Khi game over, hiển thị Final Score
     public void GameOver()
     {
-        SaveScores(ScoreValue);
-        UpdateFinalScoreUI(ScoreValue);
+        isGameOver = true;
+        StopAllCoroutines(); // Đảm bảo mọi Coroutine đều dừng lại
+
+        // Đảm bảo Final Score luôn chính xác
+        int finalScore = ScoreValue;
+        SaveScores(finalScore);
+        UpdateFinalScoreUI(finalScore);
     }
+
 
     // Khi ứng dụng đóng, lưu Final Score
     void OnApplicationQuit()
@@ -100,7 +109,7 @@ public class ScoreCountScript : MonoBehaviour
             Debug.Log("Loaded Scores - Final Score: " + data.finalScore + ", High Score: " + data.highScore);
 
             UpdateHighScoreUI(data.highScore);
-            UpdateFinalScoreUI(data.finalScore);
+            UpdateFinalScoreUI(ScoreValue);
         }
         else
         {
@@ -137,7 +146,7 @@ public class ScoreCountScript : MonoBehaviour
     {
         if (finalScoreText != null)
         {
-            finalScoreText.text = "Final Score: " + finalScore;
+            displayFinalScoreText.text = "Final Score: " + finalScore;
         }
         else
         {

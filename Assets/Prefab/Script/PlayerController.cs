@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private float lastRotationTime = 0f;  // Thời gian lần xoay gần nhất
     private const float comboDuration = 2f;  // Khoảng thời gian cho combo (2s)
     private int countCombo = 0;
+    private GameOverScript gameOverManager;
+    public GameObject gameOverUI;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -107,8 +109,34 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            Destroy(this.gameObject);
+            OnGameOver();
+            gameOverManager = FindFirstObjectByType<GameOverScript>(); // Tìm GameOverScript
 
+            if (gameOverManager != null)
+            {
+                gameOverManager.ShowGameOver(); // Hiển thị UI Game Over
+            }
+            else
+            {
+                Debug.LogWarning("GameOverScript not found!");
+            }
+
+            Debug.Log("died");
+            Destroy(gameObject); // Xóa nhân vật sau khi gọi GameOver
+        }
+    }
+
+
+    private void OnGameOver()
+    {
+        ScoreCountScript scoreScript = FindFirstObjectByType<ScoreCountScript>();
+        if (scoreScript != null)
+        {
+            scoreScript.GameOver();
+        }
+        else
+        {
+            Debug.LogWarning("ScoreCountScript not found! Cannot save final score.");
         }
     }
 
