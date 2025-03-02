@@ -257,7 +257,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 12.6
+  orthographic size: 15.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -282,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 304009264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8999996, y: 3.95, z: -10}
+  m_LocalPosition: {x: 4.13, y: 3.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -925,7 +925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -313, y: 143}
+  m_AnchoredPosition: {x: -259.1, y: 170.9}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245739846
@@ -1037,7 +1037,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2098840782874583, guid: 702fdfec67207d846a4804bb64e38846, type: 3}
       propertyPath: m_DynamicOccludee
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1029239249975579359, guid: 702fdfec67207d846a4804bb64e38846, type: 3}
       propertyPath: m_Name
@@ -1090,6 +1090,10 @@ PrefabInstance:
     - target: {fileID: 8365848302225711736, guid: 702fdfec67207d846a4804bb64e38846, type: 3}
       propertyPath: m_Speed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8365848302225711736, guid: 702fdfec67207d846a4804bb64e38846, type: 3}
+      propertyPath: m_ForceScale
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1229,8 +1233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -77, y: 0.00000095367}
-  m_SizeDelta: {x: 183.913, y: 67.885}
+  m_AnchoredPosition: {x: -21.1, y: 14.807}
+  m_SizeDelta: {x: 182.564, y: 84.072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1596849498
 GameObject:
@@ -1268,6 +1272,10 @@ MonoBehaviour:
   - {fileID: 2600600365407853986, guid: d475152299a0dd24099cb3c543d0a07e, type: 3}
   firstMap: {fileID: 1780498485}
   maxMaps: 3
+  minSpeed: 15
+  maxSpeed: 50
+  speedChangeRate: 0.5
+  speedIncreaseOverTime: 1
 --- !u!4 &1596849500
 Transform:
   m_ObjectHideFlags: 0
@@ -1429,7 +1437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 364.2, y: 427}
+  m_AnchoredPosition: {x: 625.2, y: 474.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 2.3795376, y: 6.508712}
 --- !u!114 &1961419133
@@ -1724,7 +1732,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 12.6
+    OrthographicSize: 15.7
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -1751,7 +1759,7 @@ Transform:
   m_GameObject: {fileID: 2093113153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8999996, y: 3.95, z: -10}
+  m_LocalPosition: {x: 4.13, y: 3.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1775,7 +1783,7 @@ MonoBehaviour:
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 3.8
-  FollowOffset: {x: 10.77, y: 2, z: -10}
+  FollowOffset: {x: 15.8, y: 2, z: -10}
 --- !u!1 &2099733336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,13 +1889,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6945581979099833540, guid: 11ce8164159d3f043ac4e6eaaa08e0e8, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7992912013375481771, guid: 11ce8164159d3f043ac4e6eaaa08e0e8, type: 3}
       propertyPath: jumpForce
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7992912013375481771, guid: 11ce8164159d3f043ac4e6eaaa08e0e8, type: 3}
       propertyPath: rotationSpeed
-      value: 5000
+      value: 2500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
