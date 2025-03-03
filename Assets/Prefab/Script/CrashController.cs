@@ -1,4 +1,4 @@
-using Unity.Cinemachine;
+﻿using Unity.Cinemachine;
 using UnityEngine;
 
 public class CrashController : MonoBehaviour
@@ -9,5 +9,9 @@ public class CrashController : MonoBehaviour
         {
             Debug.Log("Crash");
         }
+
+        
+
     }
+  
 }

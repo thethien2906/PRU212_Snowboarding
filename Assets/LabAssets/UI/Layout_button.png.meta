@@ -1047,7 +1047,44 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Layout_button_0: 4259218243550360411
+      Layout_button_1: -3979195164202757547
+      Layout_button_10: -6789143441052237968
+      Layout_button_11: -6871169399608606884
+      Layout_button_12: -7262077941465303253
+      Layout_button_13: -7267707406137311574
+      Layout_button_14: 7863681230053289745
+      Layout_button_15: -4440475782233664483
+      Layout_button_16: -7663947803045899667
+      Layout_button_17: 821731895252922882
+      Layout_button_18: -7728995532571946199
+      Layout_button_19: 8056977486347636221
+      Layout_button_2: 282720757010018864
+      Layout_button_20: 1179667124424850490
+      Layout_button_21: 3660810309416817262
+      Layout_button_22: -4762070161311564990
+      Layout_button_23: -1673118053328065261
+      Layout_button_24: 2152139002599874470
+      Layout_button_25: -5818406938058805172
+      Layout_button_26: -6114609015039118947
+      Layout_button_27: 9017625959639484108
+      Layout_button_28: -6172370941782667939
+      Layout_button_29: -3960697496224814242
+      Layout_button_3: 1085812973078078654
+      Layout_button_30: -97177954436631821
+      Layout_button_31: 3333894089827850844
+      Layout_button_32: 3630885373298756125
+      Layout_button_33: 5387091316042814443
+      Layout_button_34: -7188906160013669895
+      Layout_button_35: -1073175405545419332
+      Layout_button_36: 1671346167415829786
+      Layout_button_4: 3099536640404269875
+      Layout_button_5: -7311266857465701632
+      Layout_button_6: -6989506665884029534
+      Layout_button_7: 6272284076301748842
+      Layout_button_8: 2288652171780952964
+      Layout_button_9: 2986087325202078409
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

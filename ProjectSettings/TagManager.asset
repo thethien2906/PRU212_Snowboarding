@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Map
+  - Coin
+  - Coins
   layers:
   - Default
   - TransparentFX
@@ -51,6 +53,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1174735537
+    locked: 0
+  - name: item
+    uniqueID: 715184645
     locked: 0
   m_RenderingLayers:
   - Default
