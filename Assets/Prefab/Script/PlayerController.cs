@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private int countCombo = 0;
     private GameOverScript gameOverManager;
     public GameObject gameOverUI;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -29,13 +30,11 @@ public class PlayerController : MonoBehaviour
     {
         HandleRotation();
         CheckRotationForScore();
-
     }
 
     void Update()
     {
         HandleJump();
-
         mapSpawner.CheckAndSpawnNextMap(transform);
     }
 
@@ -54,16 +53,13 @@ public class PlayerController : MonoBehaviour
 
         rb.AddTorque(rotationInput * rotationSpeed * Time.fixedDeltaTime);
     }
+
     void HandleJump()
     {
-
-
-
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             isGrounded = false; // Ngăn nhảy liên tục
-
         }
     }
 
@@ -96,7 +92,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -105,6 +100,7 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
@@ -124,8 +120,18 @@ public class PlayerController : MonoBehaviour
             Debug.Log("died");
             Destroy(gameObject); // Xóa nhân vật sau khi gọi GameOver
         }
+        else if (other.gameObject.CompareTag("Coins"))
+        {
+            Destroy(other.gameObject); // Xóa đồng xu
+            HandleCoinCollision();
+        }
     }
 
+    private void HandleCoinCollision()
+    {
+        ScoreCountScript.ScoreValue += 10; // Cộng 10 điểm
+        Debug.Log("Collected a coin! Score: " + ScoreCountScript.ScoreValue);
+    }
 
     private void OnGameOver()
     {
@@ -139,5 +145,4 @@ public class PlayerController : MonoBehaviour
             Debug.LogWarning("ScoreCountScript not found! Cannot save final score.");
         }
     }
-
 }

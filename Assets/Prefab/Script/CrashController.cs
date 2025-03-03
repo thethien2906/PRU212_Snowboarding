@@ -9,6 +9,9 @@ public class CrashController : MonoBehaviour
         {
             Debug.Log("Crash");
         }
+
+        
+
     }
   
 }
