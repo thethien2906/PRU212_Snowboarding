@@ -120,6 +120,23 @@ public class PlayerController : MonoBehaviour
             Debug.Log("died");
             Destroy(gameObject); // Xóa nhân vật sau khi gọi GameOver
         }
+        else if (other.gameObject.CompareTag("Obstacle"))
+        {
+            OnGameOver();
+            gameOverManager = FindFirstObjectByType<GameOverScript>(); // Tìm GameOverScript
+
+            if (gameOverManager != null)
+            {
+                gameOverManager.ShowGameOver(); // Hiển thị UI Game Over
+            }
+            else
+            {
+                Debug.LogWarning("GameOverScript not found!");
+            }
+            AudioManager.instance.PlaySFX(1);
+            Debug.Log("died");
+            Destroy(gameObject);
+        }
         else if (other.gameObject.CompareTag("Coins"))
         {
             Destroy(other.gameObject); // Xóa đồng xu
@@ -127,6 +144,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlaySFX(0);
 
         }
+        
     }
 
     private void HandleCoinCollision()

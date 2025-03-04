@@ -8,6 +8,7 @@ TagManager:
   - Map
   - Coin
   - Coins
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -56,6 +57,9 @@ TagManager:
     locked: 0
   - name: item
     uniqueID: 715184645
+    locked: 0
+  - name: Foreground
+    uniqueID: 2089966061
     locked: 0
   m_RenderingLayers:
   - Default
