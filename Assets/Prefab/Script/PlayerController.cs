@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.LogWarning("GameOverScript not found!");
             }
-
+            AudioManager.instance.PlaySFX(1);
             Debug.Log("died");
             Destroy(gameObject); // Xóa nhân vật sau khi gọi GameOver
         }
@@ -124,6 +124,8 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject); // Xóa đồng xu
             HandleCoinCollision();
+            AudioManager.instance.PlaySFX(0);
+
         }
     }
 

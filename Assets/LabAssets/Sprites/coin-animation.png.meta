@@ -79,7 +79,7 @@ TextureImporter:
     maxTextureSize: 32
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -109,7 +109,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 70
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -129,9 +129,9 @@ TextureImporter:
       name: coin-animation_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 70
         y: 0
-        width: 64
+        width: 55
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,9 +151,9 @@ TextureImporter:
       name: coin-animation_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 133
         y: 0
-        width: 64
+        width: 50
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,6 +165,28 @@ TextureImporter:
       bones: []
       spriteID: 427b1cdc640541010800000000000000
       internalID: 1158639269171017508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coin-animation_3
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 3
+        width: 55
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7845739f519a094683308a9ed5b20fe
+      internalID: 1504866521
       vertices: []
       indices: 
       edges: []
@@ -186,6 +208,7 @@ TextureImporter:
       coin-animation_0: 8980438598086963491
       coin-animation_1: 3344596444136561788
       coin-animation_2: 1158639269171017508
+      coin-animation_3: 1504866521
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
