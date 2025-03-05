@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     {
         AudioManager.instance.PlayBGM(0);
     }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
