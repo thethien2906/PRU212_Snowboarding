@@ -22,6 +22,7 @@ Players ski through steep mountain peaks.
 #### Scoring System
 - The faster the player's speed, the more points they earn.
 - Collecting gold coins increases the score.
+- Flip to get bonus point
 
 #### Controls
 - **Move:** Arrow keys.
